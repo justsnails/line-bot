@@ -48,8 +48,12 @@ def handle_message(event):
     with ApiClient(configuration) as api_client:
         msg = event.message.text
         r = '我看不懂你說什麼'
-        if msg == 'hi':
-            r = 'hi'
+        if msg in ['hi', 'Hi', 'HI', 'hI']:
+            r = '嗨'
+        elif msg in ['你是誰', '妳是誰']:
+            r = '我是機器人'
+        elif '訂位' in msg:
+            r = '你想訂位，是嗎?'
         elif msg == '你吃飯了嗎':
             r = '還沒，有推薦的嗎?'
         line_bot_api = MessagingApi(api_client)
